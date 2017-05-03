@@ -15,6 +15,8 @@
 		21032EA51EB9BA6400596AE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21032EA31EB9BA6400596AE6 /* LaunchScreen.storyboard */; };
 		21032EB01EB9BA6500596AE6 /* YQDropDownMenuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21032EAF1EB9BA6500596AE6 /* YQDropDownMenuTests.m */; };
 		21032EBB1EB9BA6500596AE6 /* YQDropDownMenuUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 21032EBA1EB9BA6500596AE6 /* YQDropDownMenuUITests.m */; };
+		21032ECB1EB9BAB900596AE6 /* YQDropDownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 21032ECA1EB9BAB900596AE6 /* YQDropDownMenu.m */; };
+		21032ECD1EB9BAD500596AE6 /* YQDropDownMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 21032ECC1EB9BAD500596AE6 /* YQDropDownMenu.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,9 @@
 		21032EB61EB9BA6500596AE6 /* YQDropDownMenuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YQDropDownMenuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21032EBA1EB9BA6500596AE6 /* YQDropDownMenuUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YQDropDownMenuUITests.m; sourceTree = "<group>"; };
 		21032EBC1EB9BA6500596AE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21032EC91EB9BAB900596AE6 /* YQDropDownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQDropDownMenu.h; sourceTree = "<group>"; };
+		21032ECA1EB9BAB900596AE6 /* YQDropDownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQDropDownMenu.m; sourceTree = "<group>"; };
+		21032ECC1EB9BAD500596AE6 /* YQDropDownMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YQDropDownMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +86,7 @@
 		21032E891EB9BA6300596AE6 = {
 			isa = PBXGroup;
 			children = (
+				21032EC81EB9BA9000596AE6 /* Classes */,
 				21032E941EB9BA6400596AE6 /* YQDropDownMenu */,
 				21032EAE1EB9BA6500596AE6 /* YQDropDownMenuTests */,
 				21032EB91EB9BA6500596AE6 /* YQDropDownMenuUITests */,
@@ -138,6 +144,16 @@
 				21032EBC1EB9BA6500596AE6 /* Info.plist */,
 			);
 			path = YQDropDownMenuUITests;
+			sourceTree = "<group>";
+		};
+		21032EC81EB9BA9000596AE6 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				21032EC91EB9BAB900596AE6 /* YQDropDownMenu.h */,
+				21032ECA1EB9BAB900596AE6 /* YQDropDownMenu.m */,
+				21032ECC1EB9BAD500596AE6 /* YQDropDownMenu.xib */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,6 +268,7 @@
 				21032EA51EB9BA6400596AE6 /* LaunchScreen.storyboard in Resources */,
 				21032EA21EB9BA6400596AE6 /* Assets.xcassets in Resources */,
 				21032EA01EB9BA6400596AE6 /* Main.storyboard in Resources */,
+				21032ECD1EB9BAD500596AE6 /* YQDropDownMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +296,7 @@
 				21032E9D1EB9BA6400596AE6 /* ViewController.m in Sources */,
 				21032E9A1EB9BA6400596AE6 /* AppDelegate.m in Sources */,
 				21032E971EB9BA6400596AE6 /* main.m in Sources */,
+				21032ECB1EB9BAB900596AE6 /* YQDropDownMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,6 +449,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GP4MMMES25;
 				INFOPLIST_FILE = YQDropDownMenu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iqilu..YQDropDownMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -443,6 +462,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GP4MMMES25;
 				INFOPLIST_FILE = YQDropDownMenu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iqilu..YQDropDownMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";

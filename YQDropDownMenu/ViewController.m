@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "YQDropDownMenu.h"
 
-@interface ViewController ()
+@interface ViewController () <YQDropDownMenuDelegate>
 
 @end
 
@@ -19,6 +20,17 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+- (IBAction)showAction:(UIButton *)sender {
+    YQDropDownMenu *menu = [YQDropDownMenu create];
+    menu.delegate = self;
+    menu.locationReferView = sender;
+    menu.titleArray = @[@"喝咯", @"adaga"];
+    [menu show];
+}
+
+- (void)dropDownMenu:(YQDropDownMenu *)menu didClickRow:(NSInteger)row {
+    NSLog(@"row :%ld",row);
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
