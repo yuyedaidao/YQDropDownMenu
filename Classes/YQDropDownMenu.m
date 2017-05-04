@@ -1,10 +1,10 @@
-//
-//  YQDropDownMenu.m
-//  YQDropDownMenu
-//
-//  Created by Wang on 2017/5/3.
-//  Copyright © 2017年 Wang. All rights reserved.
-//
+    //
+    //  YQDropDownMenu.m
+    //  YQDropDownMenu
+    //
+    //  Created by Wang on 2017/5/3.
+    //  Copyright © 2017年 Wang. All rights reserved.
+    //
 
 #import "YQDropDownMenu.h"
 #define SINGLE_LINE_WIDTH           (1 / [UIScreen mainScreen].scale)
@@ -21,12 +21,12 @@
 @implementation YQDropDownMenu
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 + (instancetype)create {
     YQDropDownMenu *menu = [[[NSBundle mainBundle] loadNibNamed:@"YQDropDownMenu" owner:nil options:nil] lastObject];
     menu.rowHeight = 44;
@@ -52,16 +52,21 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"YQDropDownMenuCell"];
-    self.topSpaceConstraint.constant = kTopSpaceConstraint;
+    self.topSpaceConstraint.constant = kTopSpaceConstraint + 1;
     self.tableView.clipsToBounds = YES;
     self.tableView.layer.cornerRadius = 10;
+    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 1)];
+    footer.backgroundColor = [UIColor clearColor];
+    self.tableView.tableFooterView = footer;
+    self.tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15);
 }
 
 - (void)show {
     NSAssert(_locationReferView, @"LocationReferView不能为空");
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    CGRect rect = [self.locationReferView convertRect:self.locationReferView.frame toView:window];
-    CGRect frame = CGRectMake(self.margin, CGRectGetMaxY(rect), CGRectGetWidth(window.bounds) - 2 * self.margin, self.rowHeight * self.titleArray.count + kTopSpaceConstraint);
+    CGRect rect = [self.locationReferView.superview convertRect:self.locationReferView.frame toView:window];
+    printf("rect refer: %s", NSStringFromCGRect(rect).UTF8String);
+    CGRect frame = CGRectMake(self.margin, CGRectGetMaxY(rect), CGRectGetWidth(window.bounds) - 2 * self.margin, self.rowHeight * (self.titleArray.count + 1) + kTopSpaceConstraint + 2);
     self.frame = frame;
     [window addSubview:self];
     self.backgroundColor = [UIColor clearColor];
@@ -86,10 +91,12 @@
         cell.textLabel.text = @"查看更多";
         cell.textLabel.textColor = _moreActionColor;
         cell.textLabel.font = _moreActionFont;
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
     } else {
         cell.textLabel.text = self.titleArray[indexPath.row];
         cell.textLabel.textColor = _titleColor;
         cell.textLabel.font = _titleFont;
+        cell.textLabel.textAlignment = NSTextAlignmentLeft;
     }
     return cell;
 }
@@ -115,7 +122,7 @@
     CGFloat height = self.bounds.size.height;
     CGFloat arrowCenterX = width * _arrowScale;
     CGMutablePathRef paths = CGPathCreateMutable();
-
+    
     CGPathMoveToPoint(paths, NULL, arrowCenterX - kTopSpaceConstraint / 2, kTopSpaceConstraint + SINGLE_LINE_ADJUST_OFFSET);
     CGPathAddLineToPoint(paths, NULL, arrowCenterX,  SINGLE_LINE_ADJUST_OFFSET);
     CGPathAddLineToPoint(paths, NULL, arrowCenterX + kTopSpaceConstraint / 2, kTopSpaceConstraint + SINGLE_LINE_ADJUST_OFFSET);
@@ -124,7 +131,7 @@
     CGPathAddArcToPoint(paths, NULL, SINGLE_LINE_ADJUST_OFFSET, height - SINGLE_LINE_ADJUST_OFFSET,SINGLE_LINE_ADJUST_OFFSET, kTopSpaceConstraint, 8);
     CGPathAddArcToPoint(paths, NULL,SINGLE_LINE_ADJUST_OFFSET, kTopSpaceConstraint, arrowCenterX - kTopSpaceConstraint / 2, kTopSpaceConstraint + SINGLE_LINE_ADJUST_OFFSET, 8);
     CGPathAddLineToPoint(paths, NULL, arrowCenterX - kTopSpaceConstraint / 2, kTopSpaceConstraint + SINGLE_LINE_ADJUST_OFFSET);
-
+    
     CGContextAddPath(context, paths);
     [[UIColor whiteColor] setFill];
     CGContextFillPath(context);
