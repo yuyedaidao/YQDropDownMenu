@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) UIColor *lineColor;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topSpaceConstraint;
+@property (weak, nonatomic) UIView *hideHandlerView;
 @end
 
 @implementation YQDropDownMenu
@@ -43,6 +44,7 @@
         _moreActionFont = [UIFont systemFontOfSize:15];
         _titleColor = [UIColor colorWithRed: 99/255.0f green:114/255.0f blue:131/255.0f alpha:1];
         _moreActionColor = [UIColor colorWithRed: 33/255.0f green:150/255.0f blue:243/255.0f alpha:1];
+        _hideWhenTouchOutside = YES;
     }
     return self;
 }
@@ -65,9 +67,17 @@
     NSAssert(_locationReferView, @"LocationReferView不能为空");
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     CGRect rect = [self.locationReferView.superview convertRect:self.locationReferView.frame toView:window];
-    printf("rect refer: %s", NSStringFromCGRect(rect).UTF8String);
     CGRect frame = CGRectMake(self.margin, CGRectGetMaxY(rect), CGRectGetWidth(window.bounds) - 2 * self.margin, self.rowHeight * (self.titleArray.count + 1) + kTopSpaceConstraint + 2);
     self.frame = frame;
+    if (_hideWhenTouchOutside) {
+        UIView *hideHandlerView = [[UIView alloc] initWithFrame:window.bounds];
+        hideHandlerView.userInteractionEnabled = YES;
+        hideHandlerView.backgroundColor = [UIColor clearColor];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hide)];
+        [hideHandlerView addGestureRecognizer:tap];
+        self.hideHandlerView = hideHandlerView;
+        [window addSubview:hideHandlerView];
+    }
     [window addSubview:self];
     self.backgroundColor = [UIColor clearColor];
     self.tableView.rowHeight = self.rowHeight;
@@ -78,6 +88,7 @@
 
 - (void)hide {
     self.hidden = YES;
+    [self.hideHandlerView removeFromSuperview];
     [self removeFromSuperview];
 }
 
