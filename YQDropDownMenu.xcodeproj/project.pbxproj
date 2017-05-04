@@ -538,6 +538,7 @@
 				21032EC11EB9BA6500596AE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		21032EC21EB9BA6500596AE6 /* Build configuration list for PBXNativeTarget "YQDropDownMenuTests" */ = {
 			isa = XCConfigurationList;
@@ -546,6 +547,7 @@
 				21032EC41EB9BA6500596AE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		21032EC51EB9BA6500596AE6 /* Build configuration list for PBXNativeTarget "YQDropDownMenuUITests" */ = {
 			isa = XCConfigurationList;
@@ -554,6 +556,7 @@
 				21032EC71EB9BA6500596AE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
