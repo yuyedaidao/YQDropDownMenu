@@ -28,7 +28,7 @@
 }
 */
 + (instancetype)create {
-    YQDropDownMenu *menu = [[[NSBundle mainBundle] loadNibNamed:@"YQDropDownMenu" owner:nil options:nil] lastObject];
+    YQDropDownMenu *menu = [[[NSBundle bundleForClass:self.class] loadNibNamed:@"YQDropDownMenu" owner:nil options:nil] lastObject];
     menu.rowHeight = 44;
     menu.margin = 15;
     menu.hidden = YES;
