@@ -28,6 +28,7 @@
 @property (strong, nonatomic) UIColor *titleColor;
 @property (strong, nonatomic) UIFont *moreActionFont;
 @property (strong, nonatomic) UIColor *moreActionColor;
+@property (assign, nonatomic) BOOL hideWhenTouchOutside;
 + (instancetype)create;
 - (void)show;
 - (void)hide;
